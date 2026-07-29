@@ -1,5 +1,7 @@
 import profilePicture from '../assets/profile-picture.webp'
 import focusOnSteroids from '../assets/imgs/projects/focusonsteroids.webp'
+import portfolioImg from '../assets/imgs/projects/portfolio.webp'
+import riftbound from '../assets/imgs/projects/riftbound.webp'
 
 export const personalInfo = {
   name: 'Enrique',
@@ -97,6 +99,7 @@ export interface Project {
   description: string
   image: string
   link?: string
+  repo?: string
 }
 
 export const projects: Project[] = [
@@ -106,6 +109,23 @@ export const projects: Project[] = [
       'Herramienta de apoyo a la concentración mediante la utilización de la técnica pomodoro, reproducción de música lofi y ruido blanco.',
     image: focusOnSteroids,
     link: 'https://focusonsteroids.netlify.app/',
+    repo: 'https://github.com/egonboz/FocusOnSteroids',
+  },
+  {
+    title: 'Portfolio Personal',
+    description:
+      'Este mismo sitio web: SPA de una página construida con React, TypeScript, Tailwind CSS y animaciones con GSAP. Despliegue automatizado en GitHub Pages mediante GitHub Actions.',
+    image: portfolioImg,
+    link: 'https://egonboz.github.io/portfolio/',
+    repo: 'https://github.com/egonboz/portfolio',
+  },
+  {
+    title: 'Riftbound Tracker',
+    description:
+      'Aplicación de seguimiento de torneos para el equipo XPS de Riftbound, el TCG de League of Legends: consulta clasificaciones de torneos oficiales a partir del ID del evento, con estadísticas y perfiles de jugadores. SPA mobile-first con React, TypeScript y Tailwind CSS.',
+    image: riftbound,
+    repo: 'https://github.com/egonboz/xpsRiftboundApp',
+    link: 'https://xpsriftboundtracker.netlify.app/?tournament=513747',
   },
 ]
 

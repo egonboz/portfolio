@@ -15,15 +15,29 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
       <h3 className="text-xl font-bold mt-4">{project.title}</h3>
       <p className="text-sm font-light mt-2">{project.description}</p>
-      {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 text-sm font-medium text-gray-800 underline underline-offset-4 hover:text-black"
-        >
-          Ver proyecto →
-        </a>
+      {(project.link || project.repo) && (
+        <div className="mt-3 flex gap-4">
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-800 underline underline-offset-4 hover:text-black"
+            >
+              Ver proyecto →
+            </a>
+          )}
+          {project.repo && (
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-800 underline underline-offset-4 hover:text-black"
+            >
+              Código →
+            </a>
+          )}
+        </div>
       )}
     </article>
   )
