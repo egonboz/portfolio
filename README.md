@@ -37,6 +37,7 @@ src/
 │   ├── Education.tsx     # Educación e idiomas
 │   ├── Contact.tsx       # Email + redes sociales
 │   ├── Footer.tsx        # Año dinámico + volver arriba
+│   ├── Reveal.tsx        # Animación de aparición al hacer scroll (GSAP)
 │   └── SplitText.tsx     # Animación de texto con GSAP
 └── assets/               # Imágenes optimizadas (.webp)
     └── originals/        # Originales sin optimizar (no se publican)
@@ -50,6 +51,15 @@ No hace falta tocar los componentes.
 
 > **Pendiente:** reemplaza el email (`tu-correo@ejemplo.com`) y las URLs
 > de GitHub/LinkedIn (`tu-usuario`) por los tuyos.
+
+## Animaciones
+
+- Entrada escalonada del hero y aparición de secciones/tarjetas al hacer
+  scroll (GSAP + ScrollTrigger, componente `Reveal`).
+- Micro-interacciones al pasar el ratón: tarjetas que se elevan, zoom en
+  imágenes de proyecto, chips e iconos reactivos.
+- Todas las animaciones se desactivan si el usuario tiene activada la
+  preferencia `prefers-reduced-motion`.
 
 ## Imágenes
 

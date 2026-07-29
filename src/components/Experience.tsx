@@ -1,9 +1,10 @@
 import Section from './Section'
+import Reveal from './Reveal'
 import { experience, type Job } from '../data/portfolio'
 
 function JobCard({ job }: { job: Job }) {
   return (
-    <article className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6">
+    <article className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="text-xl font-bold">{job.role}</h3>
         <span className="text-xs font-medium text-gray-500">{job.period}</span>
@@ -30,8 +31,10 @@ export default function Experience() {
   return (
     <Section id="experience" title="Experiencia Profesional">
       <div className="flex flex-col gap-4">
-        {experience.map((job) => (
-          <JobCard key={job.company} job={job} />
+        {experience.map((job, index) => (
+          <Reveal key={job.company} delay={index * 0.1}>
+            <JobCard job={job} />
+          </Reveal>
         ))}
       </div>
     </Section>

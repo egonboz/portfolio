@@ -1,4 +1,5 @@
 import Section from './Section'
+import Reveal from './Reveal'
 import { personalInfo, socials } from '../data/portfolio'
 
 function SocialIcon({ icon }: { icon: 'github' | 'linkedin' }) {
@@ -34,11 +35,12 @@ export default function Contact() {
   return (
     <Section id="contact" title="Contáctame">
       <div className="flex flex-col gap-4">
-        <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6">
-          <p className="text-sm">
-            Si quieres contactarme, puedes hacerlo a través de los siguientes
-            medios:
-          </p>
+        <Reveal>
+          <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
+            <p className="text-sm">
+              Si quieres contactarme, puedes hacerlo a través de los
+              siguientes medios:
+            </p>
           <a
             href={`mailto:${personalInfo.email}`}
             className="mt-4 inline-flex items-center gap-2 bg-gray-800 text-white text-sm px-5 py-2 rounded-2xl hover:bg-gray-700 transition-colors"
@@ -60,24 +62,27 @@ export default function Contact() {
             </svg>
             {personalInfo.email}
           </a>
-        </div>
-        <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6">
-          <h3 className="text-xl font-bold">Mis Redes Sociales</h3>
-          <div className="mt-4 flex gap-4">
-            {socials.map((social) => (
-              <a
-                key={social.label}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                <SocialIcon icon={social.icon} />
-              </a>
-            ))}
           </div>
-        </div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
+            <h3 className="text-xl font-bold">Mis Redes Sociales</h3>
+            <div className="mt-4 flex gap-4">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="text-gray-600 transition-all duration-200 hover:text-gray-900 hover:scale-110"
+                >
+                  <SocialIcon icon={social.icon} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </Section>
   )

@@ -1,10 +1,35 @@
+import { useLayoutEffect, useRef } from 'react'
+import { gsap } from 'gsap'
 import { personalInfo } from '../data/portfolio'
 import SplitText from './SplitText'
 
 export default function Header() {
+  const headerRef = useRef<HTMLElement>(null)
+
+  useLayoutEffect(() => {
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const q = gsap.utils.selector(headerRef)
+      gsap.from(q('[data-hero]'), {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        ease: 'power3.out',
+        stagger: 0.12,
+      })
+    })
+    return () => mm.revert()
+  }, [])
+
   return (
-    <header className="relative z-10 flex flex-col items-center text-center px-4 pt-10">
-      <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-2xl ring-4 ring-white">
+    <header
+      ref={headerRef}
+      className="relative z-10 flex flex-col items-center text-center px-4 pt-10"
+    >
+      <div
+        data-hero
+        className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-2xl ring-4 ring-white"
+      >
         <img
           className="w-full h-full object-cover"
           src={personalInfo.profilePicture}
@@ -13,7 +38,7 @@ export default function Header() {
           height={384}
         />
       </div>
-      <p className="mt-6 text-base">Hola, soy</p>
+      <p data-hero className="mt-6 text-base">Hola, soy</p>
       <SplitText
         as="h1"
         text={personalInfo.name}
@@ -23,9 +48,9 @@ export default function Header() {
         delay={90}
         duration={0.5}
       />
-      <p className="text-sm font-light text-gray-600">{personalInfo.role}</p>
-      <p className="mt-4 max-w-xl text-sm sm:text-base">{personalInfo.intro}</p>
-      <div className="mt-6 flex gap-3">
+      <p data-hero className="text-sm font-light text-gray-600">{personalInfo.role}</p>
+      <p data-hero className="mt-4 max-w-xl text-sm sm:text-base">{personalInfo.intro}</p>
+      <div data-hero className="mt-6 flex gap-3">
         <a
           href="#contact"
           className="bg-gray-800 text-white text-sm px-5 py-2 rounded-2xl hover:bg-gray-700 transition-colors"
