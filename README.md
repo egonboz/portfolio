@@ -1,69 +1,56 @@
-# React + TypeScript + Vite
+# Portafolio — Enrique González Boza
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio personal de una página construido con React, TypeScript, Vite y Tailwind CSS.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **TypeScript**
+- **Vite 7** (dev server + build)
+- **Tailwind CSS 4** (vía `@tailwindcss/vite`)
+- **GSAP** (animación del nombre con `SplitText` + `ScrollTrigger`)
 
-## Expanding the ESLint configuration
+## Comandos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install    # instalar dependencias
+pnpm dev        # servidor de desarrollo
+pnpm build      # build de producción (dist/)
+pnpm preview    # previsualizar el build
+pnpm lint       # ejecutar ESLint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Estructura
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── App.tsx               # Composición de la página
+├── App.css               # Tailwind + fondo de cuadrícula + estilos base
+├── data/
+│   └── portfolio.ts      # ⭐ Todo el contenido editable (textos, skills, proyectos, redes)
+├── components/
+│   ├── Header.tsx        # Hero: foto, nombre animado, rol, CTAs
+│   ├── Section.tsx       # Wrapper común de secciones (título + ancla)
+│   ├── About.tsx         # Perfil profesional
+│   ├── Skills.tsx        # Chips de tecnologías
+│   ├── Projects.tsx      # Grid de tarjetas de proyecto
+│   ├── Contact.tsx       # Email + redes sociales
+│   ├── Footer.tsx        # Año dinámico + volver arriba
+│   └── SplitText.tsx     # Animación de texto con GSAP
+└── assets/               # Imágenes optimizadas (.webp)
+    └── originals/        # Originales sin optimizar (no se publican)
+```
+
+## Personalizar el contenido
+
+Edita **`src/data/portfolio.ts`**: nombre, rol, textos, habilidades,
+proyectos (añade más objetos al array `projects`) y enlaces sociales.
+No hace falta tocar los componentes.
+
+> **Pendiente:** reemplaza el email (`tu-correo@ejemplo.com`) y las URLs
+> de GitHub/LinkedIn (`tu-usuario`) por los tuyos.
+
+## Imágenes
+
+Las imágenes se importan desde `src/assets` (Vite les aplica hash y las
+optimiza en el build). No uses rutas tipo `../public/...` ni strings de
+`src/assets/...` directamente en `src=""`.
