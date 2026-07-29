@@ -26,13 +26,15 @@ src/
 ├── App.tsx               # Composición de la página
 ├── App.css               # Tailwind + fondo de cuadrícula + estilos base
 ├── data/
-│   └── portfolio.ts      # ⭐ Todo el contenido editable (textos, skills, proyectos, redes)
+│   └── portfolio.ts      # ⭐ Todo el contenido editable (textos, experiencia, skills, proyectos, redes)
 ├── components/
 │   ├── Header.tsx        # Hero: foto, nombre animado, rol, CTAs
 │   ├── Section.tsx       # Wrapper común de secciones (título + ancla)
 │   ├── About.tsx         # Perfil profesional
-│   ├── Skills.tsx        # Chips de tecnologías
+│   ├── Experience.tsx    # Experiencia profesional (tarjetas por puesto)
+│   ├── Skills.tsx        # Competencias técnicas por categoría
 │   ├── Projects.tsx      # Grid de tarjetas de proyecto
+│   ├── Education.tsx     # Educación e idiomas
 │   ├── Contact.tsx       # Email + redes sociales
 │   ├── Footer.tsx        # Año dinámico + volver arriba
 │   └── SplitText.tsx     # Animación de texto con GSAP
