@@ -15,7 +15,7 @@ export default function Footer() {
         <a
           href="#top"
           aria-label={t.footerBackToTop}
-          className="text-gray-500 hover:text-gray-900 transition-colors"
+          className="text-gray-500 hover:text-gray-900 transition-colors animate-bounce"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
