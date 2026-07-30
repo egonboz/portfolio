@@ -26,7 +26,7 @@ export default function LanguageToggle() {
     <button
       ref={ref}
       onClick={() => setLang(isEnglish ? 'es' : 'en')}
-      className="relative z-20 flex items-center bg-gray-200 rounded-full p-0.5 w-[4.25rem] h-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+      className="relative z-20 flex items-center bg-gray-200 rounded-full p-0.5 w-[4.25rem] h-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 cursor-pointer"
       aria-label={`Switch to ${isEnglish ? 'Spanish' : 'English'}`}
     >
       <span

@@ -22,7 +22,9 @@ function JobCard({ job, t }: { job: Job; t: { showMore: string; showLess: string
   }, [expanded, job.bullets])
 
   return (
-    <article className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
+    <article 
+              onClick={() => setExpanded(!expanded)}
+              className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="text-xl font-bold">{job.role}</h3>
         <span className="text-xs font-medium text-gray-500">{job.period}</span>
@@ -59,8 +61,7 @@ function JobCard({ job, t }: { job: Job; t: { showMore: string; showLess: string
         </ul>
       </div>
       {hasMore && (
-        <button
-          onClick={() => setExpanded(!expanded)}
+        <div
           className="mt-2 flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors"
         >
           <span>{expanded ? t.showLess : t.showMore}</span>
@@ -79,7 +80,7 @@ function JobCard({ job, t }: { job: Job; t: { showMore: string; showLess: string
           >
             <path d="m6 9 6 6 6-6" />
           </svg>
-        </button>
+        </div>
       )}
     </article>
   )

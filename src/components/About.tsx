@@ -22,7 +22,9 @@ export default function About() {
   return (
     <Section id="about" title={t.aboutTitle}>
       <Reveal>
-        <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
+        <div
+          onClick={() => setExpanded(!expanded)}
+          className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl cursor-pointer">
           {preview.map((paragraph) => (
             <p key={paragraph.slice(0, 24)} className="text-sm text-left">
               {paragraph}
@@ -42,8 +44,7 @@ export default function About() {
             </div>
           </div>
           {hidden.length > 0 && (
-            <button
-              onClick={() => setExpanded(!expanded)}
+            <div
               className="flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors self-start"
             >
               <span>{expanded ? t.showLess : t.showMore}</span>
@@ -62,7 +63,7 @@ export default function About() {
               >
                 <path d="m6 9 6 6 6-6" />
               </svg>
-            </button>
+            </div>
           )}
         </div>
       </Reveal>
