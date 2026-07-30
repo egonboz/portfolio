@@ -1,6 +1,8 @@
-import { personalInfo } from '../data/portfolio'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Footer() {
+  const { t, data } = useLanguage()
+  const { personalInfo } = data
   const year = new Date().getFullYear()
 
   return (
@@ -12,7 +14,7 @@ export default function Footer() {
         </p>
         <a
           href="#top"
-          aria-label="Volver al inicio"
+          aria-label={t.footerBackToTop}
           className="text-gray-500 hover:text-gray-900 transition-colors"
         >
           <svg

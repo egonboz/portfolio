@@ -2,6 +2,7 @@ import profilePicture from '../assets/profile-picture.webp'
 import focusOnSteroids from '../assets/imgs/projects/focusonsteroids.webp'
 import portfolioImg from '../assets/imgs/projects/portfolio.webp'
 import riftbound from '../assets/imgs/projects/riftbound.webp'
+import type { Job, SkillCategory, Project, EducationEntry, LanguageEntry, Social } from './types'
 
 export const personalInfo = {
   name: 'Enrique',
@@ -18,14 +19,6 @@ export const aboutParagraphs = [
   'Experiencia trabajando con Java, Spring Boot, React, TypeScript y tecnologías modernas de desarrollo, participando en todas las fases del ciclo de vida del software: desde el diseño e implementación de nuevas funcionalidades hasta la optimización del rendimiento, la mentoría de desarrolladores junior y los despliegues con cliente en entornos operativos.',
   'Me motiva resolver problemas complejos de ingeniería sin perder de vista la experiencia del usuario, colaborando con equipos multidisciplinares y mejorando continuamente la calidad del software y los procesos de desarrollo.',
 ]
-
-export interface Job {
-  company: string
-  role: string
-  location: string
-  period: string
-  bullets: string[]
-}
 
 export const experience: Job[] = [
   {
@@ -62,11 +55,6 @@ export const experience: Job[] = [
   },
 ]
 
-export interface SkillCategory {
-  category: string
-  items: string[]
-}
-
 export const skillCategories: SkillCategory[] = [
   {
     category: 'Stack principal',
@@ -93,14 +81,6 @@ export const skillCategories: SkillCategory[] = [
     items: ['Figma', 'Design Systems', 'UX/UI', 'Accesibilidad'],
   },
 ]
-
-export interface Project {
-  title: string
-  description: string
-  image: string
-  link?: string
-  repo?: string
-}
 
 export const projects: Project[] = [
   {
@@ -129,12 +109,6 @@ export const projects: Project[] = [
   },
 ]
 
-export interface EducationEntry {
-  title: string
-  institution: string
-  period: string
-}
-
 export const education: EducationEntry[] = [
   {
     title: 'Grado en Ingeniería Informática del Software',
@@ -148,16 +122,10 @@ export const education: EducationEntry[] = [
   },
 ]
 
-export const languages = [
+export const languages: LanguageEntry[] = [
   { name: 'Castellano', level: 'Nativo' },
   { name: 'Inglés', level: 'Nivel Profesional (Cambridge B2 First)' },
 ]
-
-export interface Social {
-  label: string
-  url: string
-  icon: 'github' | 'linkedin'
-}
 
 export const socials: Social[] = [
   // TODO: pon aquí tus URLs reales

@@ -1,6 +1,7 @@
 import Section from './Section'
 import Reveal from './Reveal'
-import { experience, type Job } from '../data/portfolio'
+import { useLanguage } from '../context/LanguageContext'
+import type { Job } from '../data/types'
 
 function JobCard({ job }: { job: Job }) {
   return (
@@ -28,8 +29,11 @@ function JobCard({ job }: { job: Job }) {
 }
 
 export default function Experience() {
+  const { t, data } = useLanguage()
+  const { experience } = data
+
   return (
-    <Section id="experience" title="Experiencia Profesional">
+    <Section id="experience" title={t.experienceTitle}>
       <div className="flex flex-col gap-4">
         {experience.map((job, index) => (
           <Reveal key={job.company} delay={index * 0.1}>

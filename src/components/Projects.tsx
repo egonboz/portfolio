@@ -1,15 +1,16 @@
 import Section from './Section'
 import Reveal from './Reveal'
-import { projects, type Project } from '../data/portfolio'
+import { useLanguage } from '../context/LanguageContext'
+import type { Project } from '../data/types'
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, lang }: { project: Project; lang: 'es' | 'en' }) {
   return (
     <article className="flex flex-col h-full bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
       <div className="overflow-hidden rounded-xl">
         <img
           className="w-full aspect-video object-cover transition-transform duration-300 hover:scale-105"
           src={project.image}
-          alt={`Captura de pantalla de ${project.title}`}
+          alt={lang === 'es' ? `Captura de pantalla de ${project.title}` : `Screenshot of ${project.title}`}
           loading="lazy"
         />
       </div>
@@ -24,7 +25,7 @@ function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="text-sm font-medium text-gray-800 underline underline-offset-4 hover:text-black"
             >
-              Ver proyecto →
+              {lang === 'es' ? 'Ver proyecto →' : 'View project →'}
             </a>
           )}
           {project.repo && (
@@ -34,7 +35,7 @@ function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="text-sm font-medium text-gray-800 underline underline-offset-4 hover:text-black"
             >
-              Código →
+              {lang === 'es' ? 'Código →' : 'Code →'}
             </a>
           )}
         </div>
@@ -44,12 +45,15 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function Projects() {
+  const { t, data, lang } = useLanguage()
+  const { projects } = data
+
   return (
-    <Section id="projects" title="Proyectos">
+    <Section id="projects" title={t.projectsTitle}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {projects.map((project, index) => (
           <Reveal key={project.title} delay={index * 0.1} className="h-full">
-            <ProjectCard project={project} />
+            <ProjectCard project={project} lang={lang} />
           </Reveal>
         ))}
       </div>

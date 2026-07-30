@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import Section from './Section'
 import Reveal from './Reveal'
-import { skillCategories } from '../data/portfolio'
+import { useLanguage } from '../context/LanguageContext'
 
 function ChipRow({ items, hidden = false }: { items: string[]; hidden?: boolean }) {
   return (
@@ -37,7 +37,6 @@ function Marquee({
         style={{ '--marquee-duration': duration } as CSSProperties}
       >
         <ChipRow items={items} />
-        {/* Copia duplicada para el bucle infinito */}
         <ChipRow items={items} hidden />
       </div>
     </div>
@@ -45,11 +44,14 @@ function Marquee({
 }
 
 export default function Skills() {
+  const { t, data } = useLanguage()
+  const { skillCategories } = data
+
   const rowA = skillCategories.slice(0, 3).flatMap((group) => group.items)
   const rowB = skillCategories.slice(3).flatMap((group) => group.items)
 
   return (
-    <Section id="skills" title="Competencias Técnicas">
+    <Section id="skills" title={t.skillsTitle}>
       <Reveal>
         <div className="flex flex-col gap-2.5 py-1">
           <Marquee items={rowA} duration="32s" />

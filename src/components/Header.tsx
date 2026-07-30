@@ -1,9 +1,11 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { personalInfo } from '../data/portfolio'
+import { useLanguage } from '../context/LanguageContext'
 import SplitText from './SplitText'
 
 export default function Header() {
+  const { t, data, lang } = useLanguage()
+  const { personalInfo } = data
   const headerRef = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {
@@ -33,12 +35,12 @@ export default function Header() {
         <img
           className="w-full h-full object-cover"
           src={personalInfo.profilePicture}
-          alt={`Foto de ${personalInfo.fullName}`}
+          alt={lang === 'es' ? `Foto de ${personalInfo.fullName}` : `Photo of ${personalInfo.fullName}`}
           width={384}
           height={384}
         />
       </div>
-      <p data-hero className="mt-6 text-base">Hola, soy</p>
+      <p data-hero className="mt-6 text-base">{t.headerHello}</p>
       <SplitText
         as="h1"
         text={personalInfo.name}
@@ -55,18 +57,18 @@ export default function Header() {
           href="#contact"
           className="bg-gray-800 text-white text-sm px-5 py-2 rounded-2xl hover:bg-gray-700 transition-colors"
         >
-          Contáctame
+          {t.headerContact}
         </a>
         <a
           href="#projects"
           className="bg-gray-400 text-white text-sm px-5 py-2 rounded-2xl hover:bg-gray-500 transition-colors"
         >
-          Mis Proyectos
+          {t.headerProjects}
         </a>
       </div>
       <a
         href="#about"
-        aria-label="Desplázate para ver más"
+        aria-label={t.headerScroll}
         className="mt-10 animate-bounce text-gray-500 hover:text-gray-800 transition-colors"
       >
         <svg

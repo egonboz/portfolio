@@ -1,6 +1,6 @@
 import Section from './Section'
 import Reveal from './Reveal'
-import { personalInfo, socials } from '../data/portfolio'
+import { useLanguage } from '../context/LanguageContext'
 
 function SocialIcon({ icon }: { icon: 'github' | 'linkedin' }) {
   if (icon === 'github') {
@@ -32,15 +32,15 @@ function SocialIcon({ icon }: { icon: 'github' | 'linkedin' }) {
 }
 
 export default function Contact() {
+  const { t, data } = useLanguage()
+  const { personalInfo, socials } = data
+
   return (
-    <Section id="contact" title="Contáctame">
+    <Section id="contact" title={t.contactTitle}>
       <div className="flex flex-col gap-4">
         <Reveal>
           <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
-            <p className="text-sm">
-              Si quieres contactarme, puedes hacerlo a través de los
-              siguientes medios:
-            </p>
+            <p className="text-sm">{t.contactIntro}</p>
           <a
             href={`mailto:${personalInfo.email}`}
             className="mt-4 inline-flex items-center gap-2 bg-gray-800 text-white text-sm px-5 py-2 rounded-2xl hover:bg-gray-700 transition-colors"
@@ -66,7 +66,7 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
-            <h3 className="text-xl font-bold">Mis Redes Sociales</h3>
+            <h3 className="text-xl font-bold">{t.contactSocial}</h3>
             <div className="mt-4 flex gap-4">
               {socials.map((social) => (
                 <a

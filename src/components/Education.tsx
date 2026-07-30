@@ -1,10 +1,13 @@
 import Section from './Section'
 import Reveal from './Reveal'
-import { education, languages } from '../data/portfolio'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Education() {
+  const { t, data } = useLanguage()
+  const { education, languages } = data
+
   return (
-    <Section id="education" title="Educación e Idiomas">
+    <Section id="education" title={t.educationTitle}>
       <div className="flex flex-col gap-4">
         {education.map((entry, index) => (
           <Reveal key={entry.title} delay={index * 0.1}>
@@ -23,7 +26,7 @@ export default function Education() {
         ))}
         <Reveal delay={education.length * 0.1}>
           <div className="bg-white border border-gray-300 rounded-2xl shadow-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl">
-            <h3 className="text-base font-bold mb-2">Idiomas</h3>
+            <h3 className="text-base font-bold mb-2">{t.educationLanguages}</h3>
             <ul className="flex flex-col gap-1">
               {languages.map((lang) => (
                 <li key={lang.name} className="text-sm">
