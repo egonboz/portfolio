@@ -17,6 +17,8 @@ export type Translations = {
   contactIntro: string
   contactSocial: string
   footerBackToTop: string
+  showMore: string
+  showLess: string
 }
 
 const es: Translations = {
@@ -37,6 +39,8 @@ const es: Translations = {
     'Si quieres contactarme, puedes hacerlo a través de los siguientes medios:',
   contactSocial: 'Mis Redes Sociales',
   footerBackToTop: 'Volver al inicio',
+  showMore: 'Leer más',
+  showLess: 'Mostrar menos',
 }
 
 const en: Translations = {
@@ -57,6 +61,8 @@ const en: Translations = {
     'If you want to get in touch, you can reach me through the following channels:',
   contactSocial: 'My Social Networks',
   footerBackToTop: 'Back to top',
+  showMore: 'Read more',
+  showLess: 'Show less',
 }
 
 export const ui: Record<Locale, Translations> = { es, en }
