@@ -26,10 +26,25 @@ body {
   z-index: 0;
   pointer-events: none;
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(75, 85, 99, 0.06) 5px, rgba(75, 85, 99, 0.06) 6px, transparent 6px, transparent 15px),
-    repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(75, 85, 99, 0.06) 5px, rgba(75, 85, 99, 0.06) 6px, transparent 6px, transparent 15px),
-    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(107, 114, 128, 0.04) 10px, rgba(107, 114, 128, 0.04) 11px, transparent 11px, transparent 30px),
-    repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(107, 114, 128, 0.04) 10px, rgba(107, 114, 128, 0.04) 11px, transparent 11px, transparent 30px);
+    linear-gradient(0deg, rgba(75, 85, 99, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 85, 99, 0.06) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(107, 114, 128, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 114, 128, 0.04) 1px, transparent 1px);
+  background-size:
+    15px 15px,
+    15px 15px,
+    30px 30px,
+    30px 30px;
+  animation: grid-drift 5s linear infinite;
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 0 15px, 15px 0, 0 30px, 30px 0;
+  }
 }
 
 /* Marquesina infinita de competencias */
@@ -55,6 +70,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .bg-grid,
   .marquee-track {
     animation: none;
   }
