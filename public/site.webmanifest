@@ -1,0 +1,25 @@
+{
+  "name": "Enrique González Boza | Portfolio",
+  "short_name": "EGB Portfolio",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#1f2937",
+  "background_color": "#ffffff",
+  "display": "minimal-ui",
+  "start_url": "https://egonboz.github.io/portfolio"
+}
